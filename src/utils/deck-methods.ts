@@ -3,8 +3,6 @@ import deck from '../deck.json';
 
 /* Deck */
 export default class Deck {
-  constructor() {}
-
   shuffledDeck: CardProps[] = deck.slice(0);
 
   shuffle() {
@@ -28,9 +26,9 @@ export default class Deck {
 
   deal(noOfCards: number, noOfPlayers: number = 5) {
     const hands = [];
-    for (var i = 0; i < noOfPlayers; i++) {
+    for (let i = 0; i < noOfPlayers; i++) {
       const hand = [];
-      for (var j = 0; j < noOfCards; j++) {
+      for (let j = 0; j < noOfCards; j++) {
         hand.push(this.shuffledDeck[j * noOfPlayers + i]);
       }
       hands.push(hand);
