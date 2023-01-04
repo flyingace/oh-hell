@@ -1,0 +1,930 @@
+[
+  {
+    "id": 12523465,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649549,
+    "scheduleId": 2714235,
+    "scheduleType": "regular",
+    "locationId": 1,
+    "subLocationId": 2,
+    "type": "regular_season",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476099,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476100,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-04-25T12:30:00",
+    "endDateTime": "2022-04-25T13:30:00"
+  },
+  {
+    "id": 12523528,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "label": "R3G1",
+    "prevRoundGame1Label": "R2G1",
+    "prevRoundGame2Label": "R2G2",
+    "round": 3,
+    "type": "final",
+    "state": "scheduled",
+    "startDateTime": "2022-05-04T14:20:00",
+    "endDateTime": "2022-05-04T15:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523529,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "label": "R2G1",
+    "prevRoundGame1Label": "R1G1",
+    "prevRoundGame2Label": "R1G4",
+    "round": 2,
+    "nextRoundGameId": 12523528,
+    "type": "semifinal",
+    "state": "scheduled",
+    "startDateTime": "2022-05-03T14:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523530,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "label": "R1G1",
+    "round": 1,
+    "nextRoundGameId": 12523529,
+    "type": "quarterfinal",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-01T14:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523531,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "label": "R2G2",
+    "prevRoundGame1Label": "R1G2",
+    "prevRoundGame2Label": "R1G3",
+    "round": 2,
+    "nextRoundGameId": 12523528,
+    "type": "semifinal",
+    "state": "scheduled",
+    "startDateTime": "2022-05-03T14:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523532,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "label": "R1G2",
+    "round": 1,
+    "nextRoundGameId": 12523531,
+    "type": "quarterfinal",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-01T14:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523533,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "label": "R1G3",
+    "round": 1,
+    "nextRoundGameId": 12523531,
+    "type": "quarterfinal",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-02T14:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523534,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714238,
+    "scheduleType": "tournament_brackets",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "label": "R1G4",
+    "round": 1,
+    "nextRoundGameId": 12523529,
+    "type": "quarterfinal",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-02T14:20:00",
+    "genToken": "FdrwtaSZqWAqGecFROjp"
+  },
+  {
+    "id": 12523563,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-01T15:25:00",
+    "endDateTime": "2022-05-01T16:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523564,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-02T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523565,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-03T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523566,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-04T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523567,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-05T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523568,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-06T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523569,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-07T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523570,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-08T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523571,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-09T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523572,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-10T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523573,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-11T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523574,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-12T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523575,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-13T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523576,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-14T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523577,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-15T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523578,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-16T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523579,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-17T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523580,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-18T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523581,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-19T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523582,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-20T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523583,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-21T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523584,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-22T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523585,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-23T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523586,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-24T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523587,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40092,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476108,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476109,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-25T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523588,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54822,
+    "subLocationId": 0,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476110,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476107,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-26T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523589,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476103,
+      "divisionId": 219556,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476106,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-27T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  },
+  {
+    "id": 12523590,
+    "rescheduledOldGameId": 0,
+    "rescheduledNewGameId": 0,
+    "programId": 2649551,
+    "scheduleId": 2714237,
+    "scheduleType": "regular",
+    "locationId": 54681,
+    "subLocationId": 40089,
+    "type": "pool_play",
+    "state": "scheduled",
+    "homeTeam": {
+      "id": 4476104,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "awayTeam": {
+      "id": 4476105,
+      "divisionId": 219557,
+      "seedRank": 0,
+      "score": 0
+    },
+    "startDateTime": "2022-05-28T15:25:00",
+    "genToken": "mIMWlXqfIjGZhevPiXvS"
+  }
+]

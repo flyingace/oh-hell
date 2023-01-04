@@ -1,0 +1,53 @@
+[
+  {
+    "id": 2649549,
+    "masterProgramId": 2649548,
+    "master": false,
+    "sessionBased": false,
+    "name": "FE Squad",
+    "type": "tournament",
+    "details": {
+      "sport": "Activities",
+      "experienceLevel": "Novice",
+      "groupAccountMode": "youth",
+      "gender": "any",
+      "state": "upcoming",
+      "startDate": "2022-05-01"
+    },
+    "preferences": { "useDivisions": true }
+  },
+  {
+    "id": 2649550,
+    "masterProgramId": 2649548,
+    "master": false,
+    "sessionBased": false,
+    "name": "FE Squad Tournament - Sub 2",
+    "type": "tournament",
+    "details": {
+      "sport": "Activities",
+      "experienceLevel": "Novice",
+      "groupAccountMode": "youth",
+      "gender": "any",
+      "state": "upcoming",
+      "startDate": "2022-05-01"
+    },
+    "preferences": { "useDivisions": true }
+  },
+  {
+    "id": 2649551,
+    "masterProgramId": 2649548,
+    "master": false,
+    "sessionBased": false,
+    "name": "FE Squad Tournament - Sub 3",
+    "type": "tournament",
+    "details": {
+      "sport": "Activities",
+      "experienceLevel": "Novice",
+      "groupAccountMode": "youth",
+      "gender": "any",
+      "state": "upcoming",
+      "startDate": "2022-05-01"
+    },
+    "preferences": { "useDivisions": true }
+  }
+]

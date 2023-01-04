@@ -1,0 +1,54 @@
+[
+  { "id": 4476099, "name": "Team 1", "programId": 2649549 },
+  {
+    "id": 4476108,
+    "name": "Team 10",
+    "programId": 2649551,
+    "divisionId": 219556
+  },
+  {
+    "id": 4476109,
+    "name": "Team 11",
+    "programId": 2649551,
+    "divisionId": 219556
+  },
+  {
+    "id": 4476110,
+    "name": "Team 12",
+    "programId": 2649551,
+    "divisionId": 219556
+  },
+  { "id": 4476100, "name": "Team 2", "programId": 2649549 },
+  { "id": 4476101, "name": "Team 3", "programId": 2649550 },
+  { "id": 4476102, "name": "Team 4", "programId": 2649550 },
+  {
+    "id": 4476103,
+    "name": "Team 5",
+    "programId": 2649551,
+    "divisionId": 219556
+  },
+  {
+    "id": 4476104,
+    "name": "Team 6",
+    "programId": 2649551,
+    "divisionId": 219557
+  },
+  {
+    "id": 4476105,
+    "name": "Team 7",
+    "programId": 2649551,
+    "divisionId": 219557
+  },
+  {
+    "id": 4476106,
+    "name": "Team 8",
+    "programId": 2649551,
+    "divisionId": 219557
+  },
+  {
+    "id": 4476107,
+    "name": "Team 9",
+    "programId": 2649551,
+    "divisionId": 219557
+  }
+]

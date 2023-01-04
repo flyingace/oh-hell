@@ -1,0 +1,13 @@
+[
+  { "id": 2714235, "type": "regular", "status": "live", "programId": 2649549 },
+  { "id": 2714236, "type": "regular", "status": "live", "programId": 2649550 },
+  { "id": 2714237, "type": "regular", "status": "live", "programId": 2649551 },
+  {
+    "id": 2714238,
+    "name": "Brackets",
+    "type": "tournament_brackets",
+    "format": "single_elimination",
+    "status": "draft",
+    "programId": 2649551
+  }
+]

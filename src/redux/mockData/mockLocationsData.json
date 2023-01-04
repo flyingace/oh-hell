@@ -1,0 +1,102 @@
+[
+  {
+    "description": "",
+    "id": 54681,
+    "isSelected": true,
+    "name": "Elgar",
+    "sublocations": [
+      {
+        "description": "",
+        "id": 40092,
+        "isSelected": true,
+        "name": "Autumn Leaf"
+      },
+      {
+        "description": "",
+        "id": 12,
+        "isSelected": true,
+        "name": "Anhalt"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "id": 2,
+    "isSelected": true,
+    "name": "Horatio",
+    "sublocations": []
+  },
+  {
+    "description": "",
+    "id": 3,
+    "isSelected": true,
+    "name": "Maple Wood",
+    "sublocations": [
+      {
+        "description": "",
+        "id": 13,
+        "isSelected": true,
+        "name": "Roxbury"
+      },
+      {
+        "description": "",
+        "id": 14,
+        "isSelected": true,
+        "name": "Kenwood"
+      },
+      {
+        "description": "",
+        "id": 15,
+        "isSelected": true,
+        "name": "New Castle"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "id": 4,
+    "isSelected": true,
+    "name": "Nelson",
+    "sublocations": [
+      {
+        "description": "",
+        "id": 16,
+        "isSelected": true,
+        "name": "Corben"
+      },
+      {
+        "description": "",
+        "id": 17,
+        "isSelected": true,
+        "name": "Meadow Valley"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "id": 5,
+    "isSelected": false,
+    "name": "Swordfish",
+    "sublocations": []
+  },
+  {
+    "description": "",
+    "id": 6,
+    "isSelected": true,
+    "name": "Peach",
+    "sublocations": [
+      {
+        "description": "",
+        "id": 18,
+        "isSelected": true,
+        "name": "Canary"
+      },
+      {
+        "description": "",
+        "id": 19,
+        "isSelected": false,
+        "name": "Thorne"
+      }
+    ]
+  }
+]

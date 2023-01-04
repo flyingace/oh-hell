@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { upsertPlayers } from './redux/playersSlice';
+import { useAppDispatch } from './redux/store';
+import { PlayerData } from './components/Player/Player';
+import SignIn from './components/SignIn/SignIn';
+import Table from './components/Table/Table';
+import socket from './utils/socket-methods';
 import './App.css';
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    socket.on('UPDATE_PLAYERS', (playersData: PlayerData[]) => {
+      dispatch(upsertPlayers(playersData));
+    });
+
+    return () => {
+      socket.off('UPDATE_PLAYERS');
+    };
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SignIn />
+      <Table />
     </div>
   );
 }

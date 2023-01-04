@@ -1,0 +1,29 @@
+{
+  "id": "1",
+  "masterProgramId": 2649548,
+  "master": true,
+  "sessionBased": false,
+  "name": "dolore sint",
+  "type": "tournament",
+  "details": {
+    "description": "ut Excepteur",
+    "sport": "in",
+    "season": "ad elit",
+    "experienceLevel": "sed cillum ipsum aliquip",
+    "groupAccountMode": "adult",
+    "gender": "any",
+    "state": "upcoming",
+    "regStatus": "cancelled",
+    "startDate": "2022-05-10",
+    "endDate": "2022-05-13",
+    "publicRegOpenDate": "1957-03-15",
+    "registrationCloseDate": "1963-08-28"
+  },
+  "preferences": {
+    "useDivisions": true,
+    "useAwayHomeScheduleGameTeamFormat": false,
+    "labelSubProgram": "esse Excepteur enim",
+    "labelDivision": "sed enim nisi",
+    "timeZone": "America/New_York"
+  }
+}
