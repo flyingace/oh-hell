@@ -5,7 +5,7 @@ import Card, { CardData } from '../Card';
 let props: CardData;
 
 beforeEach(() => {
-  props = { suit: 'spades', value: 13, name: 'Ace' };
+  props = { suit: 'Spades', value: 13, name: 'Ace' };
 });
 
 afterEach(cleanup);

@@ -20,10 +20,15 @@ const io = new socket_io_1.Server(server, {
 const players = [];
 io.on('connection', (socket) => {
     console.log(`User Connected: ${socket.id}`);
+    if (io.engine.clientsCount > 5) {
+        socket.emit('err', { message: 'reach the limit of connections' });
+        socket.disconnect();
+    }
     socket.on('SIGN_IN', (userData) => {
         userData.playerOrder = players.length;
         players.push(userData);
         console.log('players: ', players);
+        console.log('connections: ', io.engine.clientsCount);
         io.emit('UPDATE_PLAYERS', players);
     });
     // socket.on("join_room", (data) => {

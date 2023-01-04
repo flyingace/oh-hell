@@ -5,6 +5,37 @@ import { useAppDispatch, useAppSelector } from 'redux/store';
 import { signPlayerIn } from 'utils/socket-methods';
 import * as S from './SignIn.styles';
 
+const names = ["Anaé",
+  "Anaé",
+  "Lài",
+  "Mà",
+  "Léonie",
+  "Personnalisée",
+  "Wá",
+  "Stéphanie",
+  "Danièle",
+  "Maëly",
+  "Andrée",
+  "Maëly",
+  "Eugénie",
+  "Mårten",
+  "Noémie",
+  "Kuí",
+  "Mélinda",
+  "Zoé",
+  "Crééz",
+  "Geneviève",
+  "Maïté",
+  "Joséphine",
+  "Rébecca",
+  "Loïc",
+  "Aí"]
+
+function getFakeName() {
+  const index = Math.floor(Math.random() * names.length + 1);
+  return names[index];
+}
+
 /* SignIn */
 export default function SignIn() {
   const dispatch = useAppDispatch();
@@ -36,6 +67,7 @@ export default function SignIn() {
           type="text"
           required
           ref={nameRef}
+          defaultValue={getFakeName()}
         />
       </label>
       <S.AvatarFieldset>

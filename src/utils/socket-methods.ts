@@ -14,7 +14,7 @@ export function disconnectAll() {
 export function signPlayerIn(
   playerAvatar: string,
   playerId: string,
-  playerName: string
+  playerName: string,
 ) {
   socket.emit('SIGN_IN', {
     playerAvatar: playerAvatar,
