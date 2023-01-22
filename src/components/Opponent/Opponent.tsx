@@ -11,6 +11,7 @@ export type OpponentProps = {
   playerScore: number;
 };
 
+
 /* Opponent */
 export default function Opponent({
   $positioning,

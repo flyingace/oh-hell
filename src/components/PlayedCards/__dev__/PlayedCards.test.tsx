@@ -5,7 +5,9 @@ import PlayedCards, {PlayedCardsProps} from '../PlayedCards';
 let props:PlayedCardsProps;
 
 beforeEach(() => {
-  props = {};
+  props = {
+    playedCards: []
+  };
 });
 
 describe('PlayedCards', () => {

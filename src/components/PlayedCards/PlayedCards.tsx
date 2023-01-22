@@ -1,18 +1,23 @@
+import Card, { CardData } from '../Card/Card';
 import * as S from './PlayedCards.styles';
 
-export type PlayedCardsProps = {}
+export type PlayedCardsProps = {
+  playedCards: CardData[];
+};
 
 /* PlayedCards */
-export default function PlayedCards(props: PlayedCardsProps) {
-  const {
-    /* destructured props */
-  } = props;
-
+export default function PlayedCards({ playedCards }: PlayedCardsProps) {
   return (
     <S.PlayedCards>
-      This is the styled & stateless PlayedCards component.
+      {playedCards.map(({ name, suit, value }, idx) => (
+        <Card
+          name={name}
+          suit={suit}
+          value={value}
+          key={`${name}${suit}${value}${idx}`}
+        />
+      ))}
     </S.PlayedCards>
   );
-};
+}
 /* */
-
