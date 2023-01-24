@@ -1,6 +1,7 @@
 import deck from './deck.json';
 
 export type CardData = {
+  id: number;
   name: string;
   suit: string;
   value: number;

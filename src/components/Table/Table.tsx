@@ -1,25 +1,18 @@
 import { useEffect, useState } from 'react';
-import { getClientPlayerId, getHand } from 'redux/gameSlice';
-import { getAllPlayers } from 'redux/playersSlice';
+import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
+import { getClientPlayerId, getHand, resetPlayedCards } from 'redux/gameSlice';
+import { getAllPlayers } from 'redux/playersSlice';
+import BidModal from '../BidModal/BidModal';
+import Opponent from '../Opponent/Opponent';
 import PlayedCards from '../PlayedCards/PlayedCards';
 import Player, { PlayerData } from '../Player/Player';
-import Opponent from '../Opponent/Opponent';
 import { dealCards, disconnectAll } from 'utils/socket-methods';
 import * as S from './Table.styles';
-import BidModal from '../BidModal/BidModal';
-import { CardData } from '../Card/Card';
-
-const tempCards: CardData[] = [
-  { name: 'Ace', suit: 'Hearts', value: 13 },
-  { name: 'King', suit: 'Diamonds', value: 12 },
-  { name: 'Four', suit: 'Spades', value: 4 },
-  { name: 'Ace', suit: 'Clubs', value: 13 },
-  { name: 'Nine', suit: 'Hearts', value: 9 },
-];
 
 /* Table */
 export default function Table() {
+  const dispatch = useDispatch();
   const allPlayers = useAppSelector(getAllPlayers);
   const clientPlayerId = useAppSelector(getClientPlayerId);
   const currentHand = useAppSelector(getHand);
@@ -34,7 +27,12 @@ export default function Table() {
     setOrderedPlayers(reorderedPlayers);
   }, [allPlayers, clientPlayerId]);
 
-  console.log('orderedPlayers: ', orderedPlayers);
+  function resetGame() {
+    dispatch(resetPlayedCards());
+    disconnectAll();
+    sessionStorage.clear();
+  }
+
   return (
     <S.Table>
       <Opponent
@@ -79,9 +77,9 @@ export default function Table() {
       />
       <S.HandCounter>{currentHand}</S.HandCounter>
       <BidModal />
-      <PlayedCards playedCards={tempCards} />
+      <PlayedCards />
       <button onClick={dealCards}>Deal</button>
-      <button onClick={disconnectAll}>Disconnect All</button>
+      <button onClick={resetGame}>Reset Game</button>
     </S.Table>
   );
 }

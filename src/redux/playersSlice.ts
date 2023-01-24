@@ -2,6 +2,7 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { PlayerData } from '../components/Player/Player';
 import { getClientPlayerId } from './gameSlice';
+import { CardData } from '../components/Card/Card';
 
 const playersAdapter = createEntityAdapter<PlayerData>({
   selectId: (player) => player.playerId,
@@ -20,12 +21,34 @@ const playersAdapter = createEntityAdapter<PlayerData>({
 
 const playersSlice = createSlice({
   name: 'players',
-  initialState: playersAdapter.getInitialState(),
+  initialState: playersAdapter.getInitialState({
+    booksBid: undefined,
+    booksTaken: undefined,
+    playerAvatar: undefined,
+    playerHand: [],
+    playerId: '',
+    playerName: '',
+    playerOrder: undefined,
+    playerScore: undefined,
+  }),
   reducers: {
     addPlayer: playersAdapter.addOne,
     addPlayers: playersAdapter.addMany,
     updatePlayer: playersAdapter.updateOne,
     upsertPlayers: playersAdapter.upsertMany,
+
+    updatePlayerHand(state, action) {
+      state.playerHand = action.payload;
+    },
+
+    removeCardFromHand(state, action) {
+      const cardIndex = state.playerHand.findIndex((card: CardData) => {
+        return card.id === action.payload.id;
+      });
+      const newHand = [...state.playerHand];
+      newHand.splice(cardIndex, 1);
+      state.playerHand = newHand;
+    },
   },
 });
 
@@ -45,6 +68,10 @@ export function getPlayerById(playerId: string) {
   };
 }
 
+export function getPlayerHand(state: RootState) {
+  return state.players.playerHand;
+}
+
 export function getClientPlayer(state: RootState) {
   const clientPlayerId = getClientPlayerId(state);
   console.log(clientPlayerId);
@@ -53,7 +80,13 @@ export function getClientPlayer(state: RootState) {
   };
 }
 
-export const { addPlayer, addPlayers, updatePlayer, upsertPlayers } =
-  playersSlice.actions;
+export const {
+  addPlayer,
+  addPlayers,
+  removeCardFromHand,
+  updatePlayer,
+  updatePlayerHand,
+  upsertPlayers,
+} = playersSlice.actions;
 
 export default playersSlice.reducer;

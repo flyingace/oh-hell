@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
 import Avatar from '../Avatar/Avatar';
 import BookCounter from '../BookCounter/BookCounter';
 import { CardData } from '../Card/Card';
 import Hand from '../Hand/Hand';
 import { PlayerName } from '../Opponent/Opponent.styles';
-import socket from 'utils/socket-methods';
 import * as S from './Player.styles';
 
 export type PlayerData = {
@@ -26,14 +24,6 @@ export default function Player({
   playerName,
   playerScore,
 }: PlayerData) {
-  const [hand, updateHand] = useState<CardData[]>([]);
-
-  useEffect(() => {
-    socket.on('NEW_HAND', (newHand: CardData[]) => {
-      updateHand(newHand);
-    });
-  }, []);
-
   return (
     <S.Player>
       <S.PlayerStack>
@@ -42,7 +32,7 @@ export default function Player({
         <BookCounter booksBid={booksBid} booksTaken={booksTaken} />
         <S.PlayerScore>{playerScore}</S.PlayerScore>
       </S.PlayerStack>
-      <Hand hand={hand} />
+      <Hand />
     </S.Player>
   );
 }

@@ -1,17 +1,11 @@
 /* eslint-env jest */
 import { render } from '@testing-library/react';
-import PlayedCards, {PlayedCardsProps} from '../PlayedCards';
+import PlayedCards from '../PlayedCards';
 
-let props:PlayedCardsProps;
-
-beforeEach(() => {
-  props = {
-    playedCards: []
-  };
-});
+beforeEach(() => {});
 
 describe('PlayedCards', () => {
   test('it renders as expected', () => {
-    render(<PlayedCards {...props} />);
+    render(<PlayedCards />);
   });
 });
