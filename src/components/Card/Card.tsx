@@ -1,3 +1,4 @@
+import { DragEvent } from 'react';
 import * as S from './Card.styles';
 
 export type CardName =
@@ -18,14 +19,46 @@ export type CardName =
 export type CardSuit = 'Clubs' | 'Diamonds' | 'Hearts' | 'Spades';
 
 export type CardData = {
+  draggable?: boolean;
+  id: number;
   name: CardName;
   suit: CardSuit;
   value: number;
 };
 
 /* Card */
-export default function Card({ name, suit, value }: CardData) {
+export default function Card({
+  draggable = false,
+  id,
+  name,
+  suit,
+  value,
+}: CardData) {
   const src: string = `../../assets/deck/${name}${suit}.png`;
-  return <S.Card src={src} alt={`${value} of ${suit}`} />;
+
+  function handleDragStart(evt: DragEvent) {
+    if (draggable) {
+      evt.dataTransfer.setData(
+        'text/plain',
+        JSON.stringify({ id: id, name: name, suit: suit, value: value })
+      );
+    }
+  }
+
+  function handleDragEnd() {
+    // if (dragEndHandler) {
+    //   dragEndHandler();
+    // }
+  }
+
+  return (
+    <S.Card
+      draggable={draggable}
+      src={src}
+      alt={`${value} of ${suit}`}
+      onDragEnd={handleDragEnd}
+      onDragStart={handleDragStart}
+    />
+  );
 }
 /* */

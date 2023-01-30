@@ -25,3 +25,4 @@ yarn-error.log*
 /.idea
 /Materials
 server/node_modules
+server/dist
