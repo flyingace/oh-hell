@@ -74,7 +74,6 @@ export function getPlayerHand(state: RootState) {
 
 export function getClientPlayer(state: RootState) {
   const clientPlayerId = getClientPlayerId(state);
-  console.log(clientPlayerId);
   return function (state: RootState) {
     return clientPlayerId ? selectById(state, clientPlayerId) : null;
   };

@@ -40,14 +40,8 @@ io.on('connection', (socket) => {
     io.emit('UPDATE_PLAYERS', players);
   });
 
-  // socket.on("join_room", (data) => {
-  //   socket.join(data);
-  // });
-
   socket.on('DEAL_CARDS', () => {
-    console.log('deal cards received');
     const hands = generateHands(5, 5);
-    console.log('hands: ', hands);
     distributeHands(hands);
   });
 
@@ -55,17 +49,17 @@ io.on('connection', (socket) => {
     players.length = 0;
     io.disconnectSockets();
   });
+
+  socket.on('CARD_PLAYED', (playedCard) => {
+    io.emit('ADD_PLAYED_CARD', playedCard);
+  });
 });
 
 function distributeHands(hands: CardData[][]) {
-  // for each socket registered
-  // emit the hand to that user matching by
-  // index
   io.fetchSockets().then((sockets) => {
     sockets.forEach((socket, idx) => {
       io.to(socket.id).emit('NEW_HAND', hands[idx]);
     });
-    console.log('length: ', sockets.length);
   });
 }
 
