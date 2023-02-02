@@ -1,29 +1,23 @@
+import { useAppSelector } from '../../redux/store';
+import {
+  getBooksBid,
+  getBooksTaken,
+  getPlayerInfo,
+  getPlayerScore,
+} from '../../redux/playerSlice';
 import Avatar from '../Avatar/Avatar';
 import BookCounter from '../BookCounter/BookCounter';
-import { CardData } from '../Card/Card';
 import Hand from '../Hand/Hand';
 import { PlayerName } from '../Opponent/Opponent.styles';
 import * as S from './Player.styles';
 
-export type PlayerData = {
-  booksBid?: number;
-  booksTaken?: number;
-  playerAvatar: string;
-  playerHand?: CardData[];
-  playerId: string;
-  playerName: string;
-  playerOrder?: number;
-  playerScore?: number;
-};
-
 /* Player */
-export default function Player({
-  playerAvatar,
-  booksBid = 0,
-  booksTaken = 0,
-  playerName,
-  playerScore,
-}: PlayerData) {
+export default function Player() {
+  const { playerAvatar, playerId, playerName } = useAppSelector(getPlayerInfo);
+  const booksBid = useAppSelector(getBooksBid);
+  const booksTaken = useAppSelector(getBooksTaken);
+  const playerScore = useAppSelector(getPlayerScore);
+
   return (
     <S.Player>
       <S.PlayerStack>

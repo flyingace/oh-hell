@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { upsertPlayers } from './redux/playersSlice';
 import { useAppDispatch } from './redux/store';
-import { PlayerData } from './components/Player/Player';
+import { addPlayerToGame } from './redux/gameSlice';
+import { addPlayer, PlayerData } from './redux/playerSlice';
 import SignIn from './components/SignIn/SignIn';
 import Table from './components/Table/Table';
 import socket from './utils/socket-methods';
@@ -11,12 +11,14 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    socket.on('UPDATE_PLAYERS', (playersData: PlayerData[]) => {
-      dispatch(upsertPlayers(playersData));
-    });
+    function addNewPlayer(playerData: PlayerData) {
+      dispatch(addPlayer(playerData));
+      dispatch(addPlayerToGame(playerData));
+    }
+    socket.on('ADD_PLAYER', addNewPlayer);
 
     return () => {
-      socket.off('UPDATE_PLAYERS');
+      socket.off('ADD_PLAYER', addNewPlayer);
     };
   }, [dispatch]);
 

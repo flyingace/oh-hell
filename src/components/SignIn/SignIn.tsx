@@ -1,6 +1,6 @@
-import { ChangeEvent, MouseEvent, useRef, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { getClientPlayerId, setClientPlayerId } from 'redux/gameSlice';
+import { addPlayer, getPlayerInfo } from 'redux/playerSlice';
 import { useAppDispatch, useAppSelector } from 'redux/store';
 import { signPlayerIn } from 'utils/socket-methods';
 import * as S from './SignIn.styles';
@@ -64,10 +64,13 @@ function getFakeName() {
 
 /* SignIn */
 export default function SignIn() {
-  const dispatch = useAppDispatch();
-  const clientPlayerId = useAppSelector(getClientPlayerId);
+  const { playerId } = useAppSelector(getPlayerInfo);
   const [selectedAvatar, setSelectedAvatar] = useState<string>('animal01');
   const nameRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    console.log('playerId: ', playerId);
+  }, [playerId]);
 
   function avatarSelectionChangeHandler(val: string) {
     setSelectedAvatar(val);
@@ -76,13 +79,12 @@ export default function SignIn() {
   function formSubmissionHandler(evt: MouseEvent) {
     evt.preventDefault();
     if (nameRef.current?.value) {
-      const playerId = uuidv4();
-      dispatch(setClientPlayerId(playerId));
-      signPlayerIn(selectedAvatar, playerId, nameRef.current.value);
+      const newPlayerId = uuidv4();
+      signPlayerIn(selectedAvatar, newPlayerId, nameRef.current.value);
     }
   }
 
-  return !clientPlayerId ? (
+  return !playerId ? (
     <S.SignIn>
       <h2>Sign In</h2>
       <label htmlFor="player-name">

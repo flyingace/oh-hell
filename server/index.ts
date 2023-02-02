@@ -32,12 +32,9 @@ io.on('connection', (socket) => {
   }
 
   socket.on('SIGN_IN', (userData) => {
-    userData.playerOrder = players.length;
     players.push(userData);
-    console.log('players: ', players);
-    console.log('connections: ', io.engine.clientsCount);
-
-    io.emit('UPDATE_PLAYERS', players);
+    console.log('userData: ', userData);
+    io.emit('ADD_PLAYER', userData);
   });
 
   socket.on('DEAL_CARDS', () => {
