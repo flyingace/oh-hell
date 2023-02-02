@@ -31,29 +31,23 @@ io.on('connection', (socket) => {
         console.log('connections: ', io.engine.clientsCount);
         io.emit('UPDATE_PLAYERS', players);
     });
-    // socket.on("join_room", (data) => {
-    //   socket.join(data);
-    // });
     socket.on('DEAL_CARDS', () => {
-        console.log('deal cards received');
         const hands = (0, deck_methods_1.generateHands)(5, 5);
-        console.log('hands: ', hands);
         distributeHands(hands);
     });
     socket.on('DISCONNECT_ALL', () => {
         players.length = 0;
         io.disconnectSockets();
     });
+    socket.on('CARD_PLAYED', (playedCard) => {
+        io.emit('ADD_PLAYED_CARD', playedCard);
+    });
 });
 function distributeHands(hands) {
-    // for each socket registered
-    // emit the hand to that user matching by
-    // index
     io.fetchSockets().then((sockets) => {
         sockets.forEach((socket, idx) => {
             io.to(socket.id).emit('NEW_HAND', hands[idx]);
         });
-        console.log('length: ', sockets.length);
     });
 }
 server.listen(3001, () => {
