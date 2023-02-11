@@ -1,7 +1,7 @@
 import { DragEvent, ReactNode, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/store';
-import { getPlayedCards, updatePlayedCards } from 'redux/gameSlice';
-import { removeCardFromHand } from 'redux/playersSlice';
+import { getPlayedCards, updatePlayedCards } from 'redux/roundSlice';
+import { removeCardFromHand } from 'redux/playerSlice';
 import Card, { CardData } from '../Card/Card';
 import * as S from './PlayedCards.styles';
 import socket, { addCardToPool } from '../../utils/socket-methods';

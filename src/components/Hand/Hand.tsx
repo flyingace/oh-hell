@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
-import { getPlayerHand, updatePlayerHand } from 'redux/playersSlice';
+import { getPlayerHand, updatePlayerHand } from 'redux/playerSlice';
 import Card, { CardData } from '../Card/Card';
 import socket from 'utils/socket-methods';
 import * as S from './Hand.styles';

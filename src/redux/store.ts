@@ -1,7 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import gameReducer from './gameSlice';
-import playersReducer from './playersSlice';
+import handReducer from './handSlice';
+import playerReducer from './playerSlice';
+import roundReducer from './roundSlice';
 
 const saveToSessionStorage = (state: any) => {
   try {
@@ -23,7 +25,9 @@ const loadFromSessionStorage = () => {
 
 const rootReducer = combineReducers({
   game: gameReducer,
-  players: playersReducer,
+  hand: handReducer,
+  player: playerReducer,
+  round: roundReducer,
 });
 
 const persistedStore = loadFromSessionStorage();

@@ -1,31 +1,32 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
-import { getClientPlayerId, getHand, resetPlayedCards } from 'redux/gameSlice';
-import { getAllPlayers } from 'redux/playersSlice';
+import { getAllPlayers, getHandCount } from 'redux/gameSlice';
+import { resetPlayedCards } from 'redux/roundSlice';
 import BidModal from '../BidModal/BidModal';
 import Opponent from '../Opponent/Opponent';
 import PlayedCards from '../PlayedCards/PlayedCards';
-import Player, { PlayerData } from '../Player/Player';
+import Player from '../Player/Player';
 import { dealCards, disconnectAll } from 'utils/socket-methods';
+import { getPlayerId, PlayerData } from '../../redux/playerSlice';
 import * as S from './Table.styles';
 
 /* Table */
 export default function Table() {
   const dispatch = useDispatch();
   const allPlayers = useAppSelector(getAllPlayers);
-  const clientPlayerId = useAppSelector(getClientPlayerId);
-  const currentHand = useAppSelector(getHand);
+  const currentHand = useAppSelector(getHandCount);
+  const playerId = useAppSelector(getPlayerId);
   const [orderedPlayers, setOrderedPlayers] = useState<PlayerData[]>([]);
 
   useEffect(() => {
     const startingIndex = allPlayers.findIndex(
-      (player) => player.playerId === clientPlayerId
+      (player) => player.playerId === playerId
     );
     const reorderedPlayers = allPlayers.slice();
     reorderedPlayers.unshift(...reorderedPlayers.splice(startingIndex));
     setOrderedPlayers(reorderedPlayers);
-  }, [allPlayers, clientPlayerId]);
+  }, [allPlayers, playerId]);
 
   function resetGame() {
     dispatch(resetPlayedCards());
@@ -67,14 +68,7 @@ export default function Table() {
         playerName={orderedPlayers[4]?.playerName}
         playerScore={127}
       />
-      <Player
-        booksBid={1}
-        booksTaken={3}
-        playerAvatar={orderedPlayers[0]?.playerAvatar}
-        playerId="main-player"
-        playerName={orderedPlayers[0]?.playerName}
-        playerScore={87}
-      />
+      <Player />
       <S.HandCounter>{currentHand}</S.HandCounter>
       <BidModal />
       <PlayedCards />

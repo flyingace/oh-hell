@@ -1,23 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { CardData } from '../components/Card/Card';
+import { PlayerData } from './playerSlice';
 
 export type GameState = {
-  clientPlayerId: string | null;
+  allPlayers: PlayerData[];
   gameId: string | null;
   handCount: number;
   handIndex: number;
-  playedCards: CardData[];
-  totalBids: number;
 };
 
-const initialState: GameState = {
-  clientPlayerId: null,
+const initialGameState: GameState = {
+  allPlayers: [],
   gameId: null,
   handCount: 10,
   handIndex: 0,
-  playedCards: [],
-  totalBids: 0,
 };
 
 const fivePlayerHands = [
@@ -26,51 +22,33 @@ const fivePlayerHands = [
 
 const gameSlice = createSlice({
   name: 'game',
-  initialState,
+  initialState: initialGameState,
   reducers: {
-    setClientPlayerId(state, action) {
-      state.clientPlayerId = action.payload;
-    },
-    setGameId(state, action) {
-      state.gameId = action.payload;
+    addPlayerToGame(state, action) {
+      state.allPlayers.push(action.payload);
     },
     incrementHandIndex(state) {
       state.handIndex += 1;
       updateHandCount();
     },
+    setGameId(state, action) {
+      state.gameId = action.payload;
+    },
     updateHandCount(state) {
       state.handCount = fivePlayerHands[state.handIndex];
-    },
-    updateTotalBids(state, action) {
-      state.totalBids =
-        action.payload === 'reset'
-          ? 0
-          : state.totalBids + parseInt(action.payload);
-    },
-    updatePlayedCards(state, action) {
-      state.playedCards = [...state.playedCards, action.payload];
-    },
-    resetPlayedCards(state) {
-      state.playedCards = [];
     },
   },
 });
 
 export const {
+  addPlayerToGame,
   incrementHandIndex,
-  resetPlayedCards,
-  setClientPlayerId,
   setGameId,
   updateHandCount,
-  updatePlayedCards,
-  updateTotalBids,
 } = gameSlice.actions;
 
-export const getClientPlayerId = (state: RootState) =>
-  state.game.clientPlayerId;
+export const getAllPlayers = (state: RootState) => state.game.allPlayers;
 export const getGameId = (state: RootState) => state.game.gameId;
-export const getHand = (state: RootState) => state.game.handCount;
-export const getPlayedCards = (state: RootState) => state.game.playedCards;
-export const getTotalBids = (state: RootState) => state.game.totalBids;
+export const getHandCount = (state: RootState) => state.game.handCount;
 
 export default gameSlice.reducer;

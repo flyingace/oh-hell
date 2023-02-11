@@ -1,13 +1,14 @@
-import * as S from './BidModal.styles';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { getHand, getTotalBids, updateTotalBids } from '../../redux/gameSlice';
 import { ReactNode, useRef } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { getHandCount } from '../../redux/gameSlice';
+import { getTotalBids, updateTotalBids } from '../../redux/handSlice';
+import * as S from './BidModal.styles';
 
 /* BidModal */
 export default function BidModal() {
   const dispatch = useAppDispatch();
   const totalBids = useAppSelector(getTotalBids);
-  const currentHand = useAppSelector(getHand);
+  const currentHand = useAppSelector(getHandCount);
   const playerIsDealer = false;
   const bidOptions = useRef<HTMLSelectElement>(null);
 
