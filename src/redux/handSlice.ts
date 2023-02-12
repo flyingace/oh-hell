@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { CardData, CardSuit } from '../components/Card/Card';
+import { CardData } from '../components/Card/Card';
 
 export type HandState = {
   dealerId: string | null;
   totalBids: number;
-  trumpSuit: string | null;
+  trumpCard: CardData | null;
 };
 
 const initialHandState: HandState = {
   dealerId: null,
   totalBids: 0,
-  trumpSuit: null,
+  trumpCard: null,
 };
 
 const handSlice = createSlice({
@@ -21,8 +21,8 @@ const handSlice = createSlice({
     setDealerId(state, action) {
       state.dealerId = action.payload;
     },
-    setTrumpSuit(state, action) {
-      state.trumpSuit = action.payload;
+    setHandTrumpCard(state, action) {
+      state.trumpCard = action.payload;
     },
     updateTotalBids(state, action) {
       state.totalBids += action.payload;
@@ -30,10 +30,12 @@ const handSlice = createSlice({
   },
 });
 
-export const { setDealerId, setTrumpSuit, updateTotalBids } = handSlice.actions;
+export const { setDealerId, setHandTrumpCard, updateTotalBids } =
+  handSlice.actions;
 
 export const getDealerId = (state: RootState) => state.hand.dealerId;
 export const getTotalBids = (state: RootState) => state.hand.totalBids;
-export const getTrumpSuit = (state: RootState) => state.hand.trumpSuit;
+export const getTrumpCard = (state: RootState) => state.hand.trumpCard;
+export const getTrumpSuit = (state: RootState) => state.hand.trumpCard?.suit;
 
 export default handSlice.reducer;

@@ -8,8 +8,9 @@ import Opponent, { OpponentProps } from '../Opponent/Opponent';
 import PlayedCards from '../PlayedCards/PlayedCards';
 import Player from '../Player/Player';
 import { dealCards, disconnectAll } from 'utils/socket-methods';
-import { getPlayerId, PlayerData } from '../../redux/playerSlice';
+import { getPlayerId, PlayerData } from 'redux/playerSlice';
 import * as S from './Table.styles';
+import TrumpCard from '../TrumpCard/TrumpCard';
 
 /* Table */
 export default function Table() {
@@ -39,6 +40,7 @@ export default function Table() {
       <Opponents opponents={orderedPlayers} />
       <Player />
       <S.HandCounter>{currentHand}</S.HandCounter>
+      <TrumpCard />
       <BidModal />
       <PlayedCards />
       <button onClick={dealCards}>Deal</button>

@@ -24,9 +24,6 @@ const gameSlice = createSlice({
   name: 'game',
   initialState: initialGameState,
   reducers: {
-    addPlayerToGame(state, action) {
-      state.gamePlayers.push(action.payload);
-    },
     incrementHandIndex(state) {
       state.handIndex += 1;
       updateHandCount();
@@ -44,7 +41,6 @@ const gameSlice = createSlice({
 });
 
 export const {
-  addPlayerToGame,
   incrementHandIndex,
   setGameId,
   updateGamePlayers,

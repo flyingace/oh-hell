@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import http from 'http';
 import { Server } from 'socket.io';
-import { CardData, generateHands } from './deck-methods';
+import { CardData, getHandsAndTrump } from './deck-methods';
 
 const app: Express = express();
 app.use(cors());
@@ -33,12 +33,12 @@ io.on('connection', (socket) => {
 
   socket.on('SIGN_IN', (userData) => {
     players.push(userData);
-    io.emit('ADD_PLAYER', userData);
     io.emit('UPDATE_PLAYERS', players);
   });
 
   socket.on('DEAL_CARDS', () => {
-    const hands = generateHands(5, 5);
+    const { hands, trumpCard } = getHandsAndTrump(10, 5);
+    io.emit('SET_TRUMP_CARD', trumpCard);
     distributeHands(hands);
   });
 
