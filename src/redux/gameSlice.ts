@@ -3,15 +3,15 @@ import { RootState } from './store';
 import { PlayerData } from './playerSlice';
 
 export type GameState = {
-  allPlayers: PlayerData[];
+  gamePlayers: PlayerData[];
   gameId: string | null;
   handCount: number;
   handIndex: number;
 };
 
 const initialGameState: GameState = {
-  allPlayers: [],
   gameId: null,
+  gamePlayers: [],
   handCount: 10,
   handIndex: 0,
 };
@@ -25,7 +25,7 @@ const gameSlice = createSlice({
   initialState: initialGameState,
   reducers: {
     addPlayerToGame(state, action) {
-      state.allPlayers.push(action.payload);
+      state.gamePlayers.push(action.payload);
     },
     incrementHandIndex(state) {
       state.handIndex += 1;
@@ -33,6 +33,9 @@ const gameSlice = createSlice({
     },
     setGameId(state, action) {
       state.gameId = action.payload;
+    },
+    updateGamePlayers(state, action) {
+      state.gamePlayers = action.payload;
     },
     updateHandCount(state) {
       state.handCount = fivePlayerHands[state.handIndex];
@@ -44,10 +47,11 @@ export const {
   addPlayerToGame,
   incrementHandIndex,
   setGameId,
+  updateGamePlayers,
   updateHandCount,
 } = gameSlice.actions;
 
-export const getAllPlayers = (state: RootState) => state.game.allPlayers;
+export const getGamePlayers = (state: RootState) => state.game.gamePlayers;
 export const getGameId = (state: RootState) => state.game.gameId;
 export const getHandCount = (state: RootState) => state.game.handCount;
 
