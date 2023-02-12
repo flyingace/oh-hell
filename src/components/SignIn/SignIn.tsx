@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, MouseEvent, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { addPlayer, getPlayerInfo } from 'redux/playerSlice';
 import { useAppDispatch, useAppSelector } from 'redux/store';
@@ -64,13 +64,10 @@ function getFakeName() {
 
 /* SignIn */
 export default function SignIn() {
+  const dispatch = useAppDispatch();
   const { playerId } = useAppSelector(getPlayerInfo);
   const [selectedAvatar, setSelectedAvatar] = useState<string>('animal01');
   const nameRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    console.log('playerId: ', playerId);
-  }, [playerId]);
 
   function avatarSelectionChangeHandler(val: string) {
     setSelectedAvatar(val);
@@ -80,7 +77,15 @@ export default function SignIn() {
     evt.preventDefault();
     if (nameRef.current?.value) {
       const newPlayerId = uuidv4();
-      signPlayerIn(selectedAvatar, newPlayerId, nameRef.current.value);
+      const playerName = nameRef.current.value;
+      dispatch(
+        addPlayer({
+          playerAvatar: selectedAvatar,
+          playerId: newPlayerId,
+          playerName: playerName,
+        })
+      );
+      signPlayerIn(selectedAvatar, newPlayerId, playerName);
     }
   }
 

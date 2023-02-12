@@ -3,7 +3,6 @@ import BookCounter from '../BookCounter/BookCounter';
 import * as S from './Opponent.styles';
 
 export type OpponentProps = {
-  $positioning: string;
   booksBid: number;
   booksTaken: number;
   playerAvatar?: string;
@@ -11,10 +10,8 @@ export type OpponentProps = {
   playerScore: number;
 };
 
-
 /* Opponent */
 export default function Opponent({
-  $positioning,
   booksBid,
   booksTaken,
   playerAvatar,
@@ -22,7 +19,7 @@ export default function Opponent({
   playerScore,
 }: OpponentProps) {
   return (
-    <S.Opponent $positioning={$positioning}>
+    <S.Opponent>
       <Avatar playerAvatar={playerAvatar} playerName={playerName} />
       <S.PlayerName>{playerName}</S.PlayerName>
       <BookCounter booksBid={booksBid} booksTaken={booksTaken} />

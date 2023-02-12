@@ -33,8 +33,8 @@ io.on('connection', (socket) => {
 
   socket.on('SIGN_IN', (userData) => {
     players.push(userData);
-    console.log('userData: ', userData);
     io.emit('ADD_PLAYER', userData);
+    io.emit('UPDATE_PLAYERS', players);
   });
 
   socket.on('DEAL_CARDS', () => {
