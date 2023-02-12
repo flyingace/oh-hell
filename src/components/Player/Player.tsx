@@ -1,10 +1,10 @@
-import { useAppSelector } from '../../redux/store';
+import { useAppSelector } from 'redux/store';
 import {
   getBooksBid,
   getBooksTaken,
   getPlayerInfo,
   getPlayerScore,
-} from '../../redux/playerSlice';
+} from 'redux/playerSlice';
 import Avatar from '../Avatar/Avatar';
 import BookCounter from '../BookCounter/BookCounter';
 import Hand from '../Hand/Hand';
@@ -13,7 +13,7 @@ import * as S from './Player.styles';
 
 /* Player */
 export default function Player() {
-  const { playerAvatar, playerId, playerName } = useAppSelector(getPlayerInfo);
+  const { playerAvatar, playerName } = useAppSelector(getPlayerInfo);
   const booksBid = useAppSelector(getBooksBid);
   const booksTaken = useAppSelector(getBooksTaken);
   const playerScore = useAppSelector(getPlayerScore);

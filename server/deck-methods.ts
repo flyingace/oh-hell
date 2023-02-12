@@ -27,8 +27,11 @@ const shuffleDeck = () => {
   return deckToShuffle;
 };
 
-export function generateHands(noOfCards: number = 1, noOfPlayers: number = 5) {
-  const shuffledDeck = shuffleDeck();
+function generateHands(
+  shuffledDeck: CardData[],
+  noOfCards: number,
+  noOfPlayers: number
+) {
   const hands: CardData[][] = [[], [], [], [], []];
   for (let i = 0; i < noOfPlayers; i++) {
     for (let j = 0; j < noOfCards; j++) {
@@ -38,4 +41,12 @@ export function generateHands(noOfCards: number = 1, noOfPlayers: number = 5) {
   return hands;
 }
 
-export const revealTrump = () => {};
+export function getHandsAndTrump(
+  noOfCards: number = 1,
+  noOfPlayers: number = 5
+) {
+  const deck = shuffleDeck();
+  const hands = generateHands(deck, noOfCards, noOfPlayers);
+  const trumpCard = deck[noOfCards * noOfPlayers];
+  return { hands: hands, trumpCard: trumpCard };
+}

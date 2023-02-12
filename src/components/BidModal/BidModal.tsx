@@ -1,7 +1,7 @@
 import { ReactNode, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { getHandCount } from '../../redux/gameSlice';
-import { getTotalBids, updateTotalBids } from '../../redux/handSlice';
+import { useAppDispatch, useAppSelector } from 'redux/store';
+import { getHandCount } from 'redux/gameSlice';
+import { getTotalBids, updateTotalBids } from 'redux/handSlice';
 import * as S from './BidModal.styles';
 
 /* BidModal */
