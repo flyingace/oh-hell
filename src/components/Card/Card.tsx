@@ -53,6 +53,7 @@ export default function Card({
 
   return (
     <S.Card
+      $isDraggable={draggable}
       draggable={draggable}
       src={src}
       alt={`${value} of ${suit}`}
