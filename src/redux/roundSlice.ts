@@ -3,6 +3,7 @@ import { RootState } from './store';
 import { CardData, CardSuit } from '../components/Card/Card';
 
 export type RoundState = {
+  currentPlayerId: string | null;
   highCard: CardData | null;
   leaderId: string | null;
   ledSuit: CardSuit | null;
@@ -10,6 +11,7 @@ export type RoundState = {
 };
 
 const initialRoundState: RoundState = {
+  currentPlayerId: null,
   highCard: null,
   leaderId: null,
   ledSuit: null,
@@ -20,6 +22,12 @@ const roundSlice = createSlice({
   name: 'round',
   initialState: initialRoundState,
   reducers: {
+    resetPlayedCards(state) {
+      state.playedCards = [];
+    },
+    setCurrentPlayerId(state, action) {
+      state.currentPlayerId = action.payload;
+    },
     setHighCard(state, action) {
       state.highCard = action.payload;
     },
@@ -29,9 +37,6 @@ const roundSlice = createSlice({
     setLedSuit(state, action) {
       state.ledSuit = action.payload;
     },
-    resetPlayedCards(state) {
-      state.playedCards = [];
-    },
     updatePlayedCards(state, action) {
       state.playedCards = [...state.playedCards, action.payload];
     },
@@ -39,13 +44,16 @@ const roundSlice = createSlice({
 });
 
 export const {
+  resetPlayedCards,
+  setCurrentPlayerId,
   setHighCard,
   setLeaderId,
   setLedSuit,
-  resetPlayedCards,
   updatePlayedCards,
 } = roundSlice.actions;
 
+export const getCurrentPlayerId = (state: RootState) =>
+  state.round.currentPlayerId;
 export const getHighCard = (state: RootState) => state.round.highCard;
 export const getLeaderId = (state: RootState) => state.round.leaderId;
 export const getLedSuit = (state: RootState) => state.round.ledSuit;
