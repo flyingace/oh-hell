@@ -1,15 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { PlayerData } from './playerSlice';
-
-export type GameState = {
-  gamePlayers: PlayerData[];
-  gameId: string | null;
-  handCount: number;
-  handIndex: number;
-};
+import { GameState } from '../types';
+import { getNextPlayerId, getRandomInteger } from '../utils/utils';
 
 const initialGameState: GameState = {
+  dealerId: null,
   gameId: null,
   gamePlayers: [],
   handCount: 10,
@@ -28,6 +23,26 @@ const gameSlice = createSlice({
       state.handIndex += 1;
       updateHandCount();
     },
+    updateBidder(state) {
+      // first bidder is player after dealer
+      // then next bidder
+    },
+    updateDealer(state) {
+      let nextDealerId;
+      if (state.dealerId) {
+        nextDealerId = getNextPlayerId(state.dealerId, state.gamePlayers);
+      } else {
+        const firstDealerIndex = getRandomInteger(
+          0,
+          state.gamePlayers.length - 1
+        );
+        nextDealerId = state.gamePlayers[firstDealerIndex].playerId;
+      }
+      state.dealerId = nextDealerId;
+    },
+    setDealerId(state, action) {
+      state.dealerId = action.payload;
+    },
     setGameId(state, action) {
       state.gameId = action.payload;
     },
@@ -42,11 +57,14 @@ const gameSlice = createSlice({
 
 export const {
   incrementHandIndex,
+  setDealerId,
   setGameId,
   updateGamePlayers,
   updateHandCount,
+  updateDealer,
 } = gameSlice.actions;
 
+export const getDealerId = (state: RootState) => state.game.dealerId;
 export const getGamePlayers = (state: RootState) => state.game.gamePlayers;
 export const getGameId = (state: RootState) => state.game.gameId;
 export const getHandCount = (state: RootState) => state.game.handCount;

@@ -1,6 +1,7 @@
 /* eslint-env jest */
 import { cleanup, render } from '@testing-library/react';
-import Card, { CardData } from '../Card';
+import Card from '../Card';
+import { CardData } from '../../../types';
 
 let props: CardData;
 
