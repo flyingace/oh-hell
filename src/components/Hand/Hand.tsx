@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
 import { getPlayerHand, updatePlayerHand } from 'redux/playerSlice';
 import { getLedSuit } from 'redux/roundSlice';
-import Card, { CardData, CardSuit } from '../Card/Card';
+import Card from '../Card/Card';
 import socket from 'utils/socket-methods';
+import { CardData, CardSuit } from '../../types';
 import * as S from './Hand.styles';
 
 export type HandData = {

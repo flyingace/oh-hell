@@ -2,7 +2,9 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import http from 'http';
 import { Server } from 'socket.io';
-import { CardData, getHandsAndTrump } from './deck-methods';
+import { getHandsAndTrump } from './deck-methods';
+import { getNextPlayerId, getRandomPlayerId } from './game-methods';
+import { CardData, RemoteStoreData } from './types';
 
 const app: Express = express();
 app.use(cors());
@@ -16,13 +18,12 @@ const io = new Server(server, {
   },
 });
 
-export type PlayerData = {
-  playerAvatar: string;
-  playerId: string;
-  playerName: string;
+const remoteStore: RemoteStoreData = {
+  bids: [],
+  bidderId: null,
+  dealerId: null,
+  players: [],
 };
-
-const players: PlayerData[] = [];
 
 io.on('connection', (socket) => {
   console.log(`User Connected: ${socket.id}`);
@@ -32,8 +33,17 @@ io.on('connection', (socket) => {
   }
 
   socket.on('SIGN_IN', (userData) => {
-    players.push(userData);
-    io.emit('UPDATE_PLAYERS', players);
+    remoteStore.players.push(userData);
+    io.emit('UPDATE_PLAYERS', remoteStore.players);
+  });
+
+  socket.on('SET_DEALER', () => {
+    const { dealerId, players } = remoteStore;
+    const nextDealerId = dealerId
+      ? getNextPlayerId(dealerId, players)
+      : getRandomPlayerId(players);
+
+    io.emit('UPDATE_DEALER', nextDealerId);
   });
 
   socket.on('DEAL_CARDS', () => {
@@ -43,7 +53,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('DISCONNECT_ALL', () => {
-    players.length = 0;
+    remoteStore.players.length = 0;
     io.disconnectSockets();
   });
 

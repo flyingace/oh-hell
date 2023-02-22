@@ -1,16 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { CardData } from '../components/Card/Card';
-
-export type PlayerData = {
-  booksBid: number;
-  booksTaken: number;
-  playerAvatar: string;
-  playerHand: CardData[];
-  playerId: string | null;
-  playerName: string;
-  playerScore: number;
-};
+import { CardData, PlayerData } from '../types';
 
 const initialPlayerState: PlayerData = {
   booksBid: 0,

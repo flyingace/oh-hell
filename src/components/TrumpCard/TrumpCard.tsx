@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'redux/store';
 import { getTrumpCard } from 'redux/handSlice';
-import Card, { CardData } from '../Card/Card';
+import Card from '../Card/Card';
+import { CardData } from '../../types';
 import * as S from './TrumpCard.styles';
 
 export type TrumpCardProps = {};

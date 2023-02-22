@@ -1,8 +1,8 @@
 /* eslint-env jest */
 import { render } from '@testing-library/react';
-import Opponent, { OpponentProps } from '../Opponent';
+import Opponent, { OpponentData } from '../Opponent';
 
-let props: OpponentProps;
+let props: OpponentData;
 
 describe('Opponent', () => {
   test('it renders as expected', () => {

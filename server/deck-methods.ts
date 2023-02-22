@@ -1,13 +1,7 @@
 import deck from './deck.json';
+import { CardData } from './types';
 
-export type CardData = {
-  id: number;
-  name: string;
-  suit: string;
-  value: number;
-};
-
-const shuffleDeck = () => {
+function shuffleDeck(): CardData[] {
   const deckToShuffle = deck.slice(0);
   let m = deckToShuffle.length,
     t,
@@ -24,8 +18,8 @@ const shuffleDeck = () => {
     deckToShuffle[i] = t;
   }
 
-  return deckToShuffle;
-};
+  return deckToShuffle as CardData[];
+}
 
 function generateHands(
   shuffledDeck: CardData[],
@@ -45,8 +39,8 @@ export function getHandsAndTrump(
   noOfCards: number = 1,
   noOfPlayers: number = 5
 ) {
-  const deck = shuffleDeck();
-  const hands = generateHands(deck, noOfCards, noOfPlayers);
-  const trumpCard = deck[noOfCards * noOfPlayers];
+  const shuffledDeck = shuffleDeck();
+  const hands = generateHands(shuffledDeck, noOfCards, noOfPlayers);
+  const trumpCard = shuffledDeck[noOfCards * noOfPlayers];
   return { hands: hands, trumpCard: trumpCard };
 }

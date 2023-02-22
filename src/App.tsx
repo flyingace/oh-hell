@@ -1,38 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch } from './redux/store';
-import { updateGamePlayers } from './redux/gameSlice';
+import { setDealerId, updateGamePlayers } from './redux/gameSlice';
 import { setHandTrumpCard } from './redux/handSlice';
-import { PlayerData } from './redux/playerSlice';
 import SignIn from './components/SignIn/SignIn';
 import Table from './components/Table/Table';
 import socket from './utils/socket-methods';
-import { CardData } from './components/Card/Card';
+import { CardData, PlayerData } from './types';
 import './App.css';
 
 function App() {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    function updatePlayers(playerData: PlayerData[]) {
-      dispatch(updateGamePlayers(playerData));
+  function handleSocketEvent(eventType: string, args: any): void {
+    switch (eventType) {
+      case 'UPDATE_PLAYERS':
+        dispatch(updateGamePlayers(args as PlayerData[]));
+        break;
+      case 'SET_TRUMP_CARD':
+        dispatch(setHandTrumpCard(args as CardData));
+        break;
+      case 'UPDATE_DEALER':
+        dispatch(setDealerId(args as string));
     }
-    socket.on('UPDATE_PLAYERS', updatePlayers);
+  }
 
-    return () => {
-      socket.off('UPDATE_PLAYERS', updatePlayers);
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
-    function setTrumpCard(trumpCard: CardData) {
-      dispatch(setHandTrumpCard(trumpCard));
-    }
-    socket.on('SET_TRUMP_CARD', setTrumpCard);
-
-    return () => {
-      socket.off('SET_TRUMP_CARD', setTrumpCard);
-    };
-  }, [dispatch]);
+  socket.onAny((evt, args) => {
+    handleSocketEvent(evt, args);
+  });
 
   return (
     <div className="App">

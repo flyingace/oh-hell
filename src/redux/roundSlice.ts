@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { CardData, CardSuit } from '../components/Card/Card';
+import { CardData, CardSuit } from '../types';
 
 export type RoundState = {
   currentPlayerId: string | null;

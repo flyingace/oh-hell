@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
 import { getGamePlayers, getHandCount } from 'redux/gameSlice';
+import { getPlayerId } from 'redux/playerSlice';
 import { resetPlayedCards } from 'redux/roundSlice';
 import BidModal from '../BidModal/BidModal';
-import Opponent, { OpponentProps } from '../Opponent/Opponent';
+import Opponent, { OpponentData } from '../Opponent/Opponent';
 import PlayedCards from '../PlayedCards/PlayedCards';
 import Player from '../Player/Player';
-import { dealCards, disconnectAll } from 'utils/socket-methods';
-import { getPlayerId, PlayerData } from 'redux/playerSlice';
-import * as S from './Table.styles';
 import TrumpCard from '../TrumpCard/TrumpCard';
+import { dealCards, disconnectAll, setDealer } from 'utils/socket-methods';
+import { PlayerData } from '../../types';
+import * as S from './Table.styles';
 
 /* Table */
 export default function Table() {
   const dispatch = useDispatch();
   const gamePlayers = useAppSelector(getGamePlayers);
-  const currentHand = useAppSelector(getHandCount);
+  const handCount = useAppSelector(getHandCount);
   const playerId = useAppSelector(getPlayerId);
   const [orderedPlayers, setOrderedPlayers] = useState<PlayerData[]>([]);
 
@@ -39,11 +40,12 @@ export default function Table() {
     <S.Table>
       <Opponents opponents={orderedPlayers} />
       <Player />
-      <S.HandCounter>{currentHand}</S.HandCounter>
+      <S.HandCounter>{handCount}</S.HandCounter>
       <TrumpCard />
       <BidModal />
       <PlayedCards />
       <button onClick={dealCards}>Deal</button>
+      <button onClick={setDealer}>Set Dealer</button>
       <button onClick={resetGame}>Reset Game</button>
     </S.Table>
   );
@@ -51,12 +53,19 @@ export default function Table() {
 /* */
 
 /* Opponents */
-function Opponents({ opponents }: { opponents: OpponentProps[] }) {
+function Opponents({ opponents }: { opponents: OpponentData[] }) {
   return (
     <>
       {opponents.map(
         (
-          { booksBid, booksTaken, playerAvatar, playerName, playerScore },
+          {
+            booksBid,
+            booksTaken,
+            playerAvatar,
+            playerId,
+            playerName,
+            playerScore,
+          },
           idx
         ) => {
           return idx !== 0 ? (
@@ -65,6 +74,7 @@ function Opponents({ opponents }: { opponents: OpponentProps[] }) {
               booksBid={booksBid}
               booksTaken={booksTaken}
               playerAvatar={playerAvatar}
+              playerId={playerId}
               playerName={playerName}
               playerScore={playerScore}
             />

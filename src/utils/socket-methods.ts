@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
-import { CardData } from '../components/Card/Card';
+import { CardData } from '../types';
 
 const socket = io('http://localhost:3001');
 
@@ -10,6 +10,10 @@ export function dealCards() {
 export function disconnectAll() {
   sessionStorage.clear();
   socket.emit('DISCONNECT_ALL');
+}
+
+export function setDealer() {
+  socket.emit('SET_DEALER');
 }
 
 export function signPlayerIn(

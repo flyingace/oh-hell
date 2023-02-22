@@ -1,30 +1,6 @@
 import { DragEvent } from 'react';
+import { CardData } from '../../types';
 import * as S from './Card.styles';
-
-export type CardName =
-  | 'Ace'
-  | 'Two'
-  | 'Three'
-  | 'Four'
-  | 'Five'
-  | 'Six'
-  | 'Seven'
-  | 'Eight'
-  | 'Nine'
-  | 'Ten'
-  | 'Jack'
-  | 'Queen'
-  | 'King';
-
-export type CardSuit = 'Clubs' | 'Diamonds' | 'Hearts' | 'Spades';
-
-export type CardData = {
-  draggable?: boolean;
-  id: number;
-  name: CardName;
-  suit: CardSuit;
-  value: number;
-};
 
 /* Card */
 export default function Card({
