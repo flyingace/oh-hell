@@ -34,9 +34,13 @@ export type CardData = {
 };
 
 export type GameState = {
+  activePlayerId: string | null;
   dealerId: string | null;
+  gamePhase: GamePhase;
   gamePlayers: PlayerData[];
   gameId: string | null;
   handCount: number;
   handIndex: number;
 };
+
+export type GamePhase = 'bidding' | 'dealing' | 'playingHand' | 'sitting';

@@ -1,6 +1,10 @@
 import React from 'react';
 import { useAppDispatch } from './redux/store';
-import { setDealerId, updateGamePlayers } from './redux/gameSlice';
+import {
+  setActivePlayerId,
+  setDealerId,
+  updateGamePlayers,
+} from './redux/gameSlice';
 import { setHandTrumpCard } from './redux/handSlice';
 import SignIn from './components/SignIn/SignIn';
 import Table from './components/Table/Table';
@@ -13,6 +17,9 @@ function App() {
 
   function handleSocketEvent(eventType: string, args: any): void {
     switch (eventType) {
+      case 'UPDATE_ACTIVE_PLAYER':
+        dispatch(setActivePlayerId(args as string));
+        break;
       case 'UPDATE_PLAYERS':
         dispatch(updateGamePlayers(args as PlayerData[]));
         break;

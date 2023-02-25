@@ -35,7 +35,7 @@ export type BidData = {
 
 export type RemoteStoreData = {
   bids: BidData[];
-  bidderId: string | null;
+  activePlayerId: string | null;
   dealerId: string | null;
   players: PlayerData[];
 };

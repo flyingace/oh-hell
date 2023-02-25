@@ -1,14 +1,14 @@
 import { PlayerData } from './types';
 
 export function getNextPlayerId(
-  currentPlayerId: string,
+  activePlayerId: string,
   playerArray: PlayerData[]
 ): string {
-  const currentPlayerIndex = playerArray.findIndex(
-    (player) => player.playerId === currentPlayerId
+  const activePlayerIndex = playerArray.findIndex(
+    (player) => player.playerId === activePlayerId
   );
   const nextPlayerIndex =
-    currentPlayerIndex + 1 < playerArray.length ? currentPlayerIndex + 1 : 0;
+    activePlayerIndex + 1 < playerArray.length ? activePlayerIndex + 1 : 0;
   return playerArray[nextPlayerIndex].playerId;
 }
 
