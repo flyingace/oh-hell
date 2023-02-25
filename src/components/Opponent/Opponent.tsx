@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../redux/store';
-import { getDealerId } from '../../redux/gameSlice';
-import { getCurrentPlayerId } from '../../redux/roundSlice';
+import { getActivePlayerId, getDealerId } from '../../redux/gameSlice';
 import Avatar from '../Avatar/Avatar';
 import BookCounter from '../BookCounter/BookCounter';
 import DealerButton from '../DealerButton/DealerButton';
@@ -19,9 +18,9 @@ export default function Opponent({
   playerName,
   playerScore,
 }: OpponentData) {
-  const currentPlayerId = useAppSelector(getCurrentPlayerId);
+  const activePlayerId = useAppSelector(getActivePlayerId);
   const dealerId = useAppSelector(getDealerId);
-  const [isCurrentPlayer, setIsCurrentPlayer] = useState<boolean>(false);
+  const [isActivePlayer, setIsActivePlayer] = useState<boolean>(false);
   const [isDealer, setIsDealer] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,12 +28,12 @@ export default function Opponent({
   }, [dealerId, playerId]);
 
   useEffect(() => {
-    setIsCurrentPlayer(currentPlayerId === playerId);
-  }, [currentPlayerId, playerId]);
+    setIsActivePlayer(activePlayerId === playerId);
+  }, [activePlayerId, playerId]);
 
   return (
     <S.Opponent>
-      {isCurrentPlayer ? <p>It is your turn</p> : null}
+      {isActivePlayer ? <p>It is your turn</p> : null}
       {isDealer ? <DealerButton /> : null}
       <Avatar playerAvatar={playerAvatar} playerName={playerName} />
       <S.PlayerName>{playerName}</S.PlayerName>

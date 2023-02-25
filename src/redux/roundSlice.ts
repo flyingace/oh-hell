@@ -3,7 +3,7 @@ import { RootState } from './store';
 import { CardData, CardSuit } from '../types';
 
 export type RoundState = {
-  currentPlayerId: string | null;
+  activePlayerId: string | null;
   highCard: CardData | null;
   leaderId: string | null;
   ledSuit: CardSuit | null;
@@ -11,7 +11,7 @@ export type RoundState = {
 };
 
 const initialRoundState: RoundState = {
-  currentPlayerId: null,
+  activePlayerId: null,
   highCard: null,
   leaderId: null,
   ledSuit: null,
@@ -24,9 +24,6 @@ const roundSlice = createSlice({
   reducers: {
     resetPlayedCards(state) {
       state.playedCards = [];
-    },
-    setCurrentPlayerId(state, action) {
-      state.currentPlayerId = action.payload;
     },
     setHighCard(state, action) {
       state.highCard = action.payload;
@@ -45,15 +42,12 @@ const roundSlice = createSlice({
 
 export const {
   resetPlayedCards,
-  setCurrentPlayerId,
   setHighCard,
   setLeaderId,
   setLedSuit,
   updatePlayedCards,
 } = roundSlice.actions;
 
-export const getCurrentPlayerId = (state: RootState) =>
-  state.round.currentPlayerId;
 export const getHighCard = (state: RootState) => state.round.highCard;
 export const getLeaderId = (state: RootState) => state.round.leaderId;
 export const getLedSuit = (state: RootState) => state.round.ledSuit;

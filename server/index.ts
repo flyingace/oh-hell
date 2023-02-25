@@ -20,7 +20,7 @@ const io = new Server(server, {
 
 const remoteStore: RemoteStoreData = {
   bids: [],
-  bidderId: null,
+  activePlayerId: null,
   dealerId: null,
   players: [],
 };
@@ -42,8 +42,9 @@ io.on('connection', (socket) => {
     const nextDealerId = dealerId
       ? getNextPlayerId(dealerId, players)
       : getRandomPlayerId(players);
-
+    const nextPlayerId = getNextPlayerId(nextDealerId, players);
     io.emit('UPDATE_DEALER', nextDealerId);
+    io.emit('UPDATE_ACTIVE_PLAYER', nextPlayerId);
   });
 
   socket.on('DEAL_CARDS', () => {
