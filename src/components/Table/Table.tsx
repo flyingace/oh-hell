@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
-import { getGamePlayers, getHandCount } from 'redux/gameSlice';
+import { getGamePhase, getGamePlayers, getHandCount } from 'redux/gameSlice';
 import { getPlayerId } from 'redux/playerSlice';
 import { resetPlayedCards } from 'redux/roundSlice';
 import BidModal from '../BidModal/BidModal';
@@ -16,6 +16,7 @@ import * as S from './Table.styles';
 /* Table */
 export default function Table() {
   const dispatch = useDispatch();
+  const gamePhase = useAppSelector(getGamePhase);
   const gamePlayers = useAppSelector(getGamePlayers);
   const handCount = useAppSelector(getHandCount);
   const playerId = useAppSelector(getPlayerId);
@@ -42,7 +43,9 @@ export default function Table() {
       <Player />
       <S.HandCounter>{handCount}</S.HandCounter>
       <TrumpCard />
-      <BidModal />
+      {gamePhase === 'bidding' ? (
+        <BidModal players={orderedPlayers} playerId={playerId} />
+      ) : null}
       <PlayedCards />
       <button onClick={dealCards}>Deal</button>
       <button onClick={setDealer}>Set Dealer</button>

@@ -4,7 +4,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 import { getHandsAndTrump } from './deck-methods';
 import { getNextPlayerId, getRandomPlayerId } from './game-methods';
-import { CardData, RemoteStoreData } from './types';
+import { CardData, PlayerData } from './types';
 
 const app: Express = express();
 app.use(cors());
@@ -18,8 +18,18 @@ const io = new Server(server, {
   },
 });
 
+export type BidData = {
+  bid: string;
+  playerId: string;
+};
+
+export type RemoteStoreData = {
+  activePlayerId: string | null;
+  dealerId: string | null;
+  players: PlayerData[];
+};
+
 const remoteStore: RemoteStoreData = {
-  bids: [],
   activePlayerId: null,
   dealerId: null,
   players: [],
@@ -32,8 +42,9 @@ io.on('connection', (socket) => {
     socket.disconnect();
   }
 
-  socket.on('SIGN_IN', (userData) => {
-    remoteStore.players.push(userData);
+  socket.on('SIGN_IN', (playerData: PlayerData) => {
+    remoteStore.players.push(playerData);
+    //TODO: Fix this so all players aren't being updated every time
     io.emit('UPDATE_PLAYERS', remoteStore.players);
   });
 
@@ -42,9 +53,13 @@ io.on('connection', (socket) => {
     const nextDealerId = dealerId
       ? getNextPlayerId(dealerId, players)
       : getRandomPlayerId(players);
-    const nextPlayerId = getNextPlayerId(nextDealerId, players);
     io.emit('UPDATE_DEALER', nextDealerId);
-    io.emit('UPDATE_ACTIVE_PLAYER', nextPlayerId);
+    updateActivePlayer(nextDealerId);
+  });
+
+  socket.on('SUBMIT_BID', ({ bid, playerId }: BidData) => {
+    io.emit('BID_SUBMITTED', { bid: bid, playerId: playerId });
+    updateActivePlayer(playerId);
   });
 
   socket.on('DEAL_CARDS', () => {
@@ -69,6 +84,11 @@ function distributeHands(hands: CardData[][]) {
       io.to(socket.id).emit('NEW_HAND', hands[idx]);
     });
   });
+}
+
+function updateActivePlayer(currentPlayerId: string) {
+  const nextPlayerId = getNextPlayerId(currentPlayerId, remoteStore.players);
+  io.emit('UPDATE_ACTIVE_PLAYER', nextPlayerId);
 }
 
 server.listen(3001, () => {

@@ -6,7 +6,7 @@ const initialGameState: GameState = {
   activePlayerId: null,
   dealerId: null,
   gameId: null,
-  gamePhase: 'sitting',
+  gamePhase: 'bidding',
   gamePlayers: [],
   handCount: 10,
   handIndex: 0,
@@ -59,6 +59,7 @@ export const getActivePlayerId = (state: RootState) =>
   state.game.activePlayerId;
 export const getDealerId = (state: RootState) => state.game.dealerId;
 export const getGameId = (state: RootState) => state.game.gameId;
+export const getGamePhase = (state: RootState) => state.game.gamePhase;
 export const getGamePlayers = (state: RootState) => state.game.gamePlayers;
 export const getHandCount = (state: RootState) => state.game.handCount;
 

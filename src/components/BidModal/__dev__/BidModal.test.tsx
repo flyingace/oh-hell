@@ -2,12 +2,10 @@
 import { render } from '@testing-library/react';
 import BidModal from '../BidModal';
 
-
-beforeEach(() => {
-});
+beforeEach(() => {});
 
 describe('BidModal', () => {
   test('it renders as expected', () => {
-    render(<BidModal />);
+    render(<BidModal playerId="playerId" players={[]} />);
   });
 });
