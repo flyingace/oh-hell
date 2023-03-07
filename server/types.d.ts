@@ -27,15 +27,3 @@ export type CardData = {
   suit: CardSuit;
   value: number;
 };
-
-export type BidData = {
-  player: PlayerData;
-  bid: number;
-};
-
-export type RemoteStoreData = {
-  bids: BidData[];
-  activePlayerId: string | null;
-  dealerId: string | null;
-  players: PlayerData[];
-};

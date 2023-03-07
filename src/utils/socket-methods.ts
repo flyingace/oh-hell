@@ -22,14 +22,21 @@ export function signPlayerIn(
   playerName: string
 ) {
   socket.emit('SIGN_IN', {
+    booksBid: 0,
+    booksTaken: 0,
     playerAvatar: playerAvatar,
     playerId: playerId,
     playerName: playerName,
+    playerScore: 0,
   });
 }
 
 export function addCardToPool(card: CardData) {
   socket.emit('CARD_PLAYED', card);
+}
+
+export function submitBid(bid: string, playerId: string) {
+  socket.emit('SUBMIT_BID', { bid: bid, playerId: playerId });
 }
 
 export default socket;

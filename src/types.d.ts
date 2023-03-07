@@ -43,4 +43,4 @@ export type GameState = {
   handIndex: number;
 };
 
-export type GamePhase = 'bidding' | 'dealing' | 'playingHand' | 'sitting';
+export type GamePhase = 'bidding' | 'dealing' | 'hand' | 'sitting';
