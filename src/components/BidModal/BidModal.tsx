@@ -1,9 +1,19 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
-import { getActivePlayerId, getDealerId, getHandCount } from 'redux/gameSlice';
-import { getBooksBidByPlayerId, getBidTotals } from 'redux/handSlice';
-import { submitBid } from '../../utils/socket-methods';
-import { PlayerData } from '../../types';
+import {
+  getActivePlayerId,
+  getDealerId,
+  getHandCount,
+  setGamePhase,
+} from 'redux/gameSlice';
+import {
+  getBooksBidByPlayerId,
+  getBidTotals,
+  getBooksBid,
+} from 'redux/handSlice';
+import { setActivePlayer, submitBid } from 'utils/socket-methods';
+import { PlayerData } from 'types';
 import * as S from './BidModal.styles';
 
 /* BidModal */
@@ -14,19 +24,35 @@ export default function BidModal({
   playerId: string | null;
   players: PlayerData[];
 }) {
-  const bidTotals = useAppSelector(getBidTotals);
-  const currentHand = useAppSelector(getHandCount);
+  const dispatch = useDispatch();
   const activePlayerId = useAppSelector(getActivePlayerId);
+  const bidTotals = useAppSelector(getBidTotals);
+  const booksBid = useAppSelector(getBooksBid);
+  const currentHand = useAppSelector(getHandCount);
   const dealerId = useAppSelector(getDealerId);
   const playerIsDealer = false;
-  const [isActivePlayer, setIsActivePlayer] = useState(false);
   const [playersOrderedByBidder, setPlayersOrderedByBidder] = useState<
     PlayerData[]
   >([]);
 
+  const isActivePlayer = playerId === activePlayerId;
+
   useEffect(() => {
-    setIsActivePlayer(!!playerId && playerId === activePlayerId);
-  }, [activePlayerId, playerId]);
+    function getHighestBidderId() {
+      const highBid =
+        Math.max(...booksBid.map((bidInfo) => parseInt(bidInfo.bid, 10))) ?? 0;
+      return booksBid.find((bidInfo) => parseInt(bidInfo.bid, 10) === highBid)
+        ?.playerId;
+    }
+
+    if (booksBid.length === 5) {
+      const highestBidderId = getHighestBidderId();
+      if (highestBidderId) {
+        setActivePlayer(highestBidderId);
+      }
+      dispatch(setGamePhase('hand'));
+    }
+  }, [booksBid, dispatch]);
 
   useEffect(() => {
     const playersCopy = [...players];
@@ -58,12 +84,6 @@ export default function BidModal({
     return bidOptions;
   }
 
-  /*
-  The player's names should appear starting with the first bidder
-  The select should only appear if the user is the active player
-  And only for the active player's row
-  Otherwise the bid shown should be whatever the player has bid
-   */
   return (
     <S.BidModal>
       <p>Hand: {currentHand}</p>
