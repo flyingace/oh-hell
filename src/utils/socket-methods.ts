@@ -16,6 +16,10 @@ export function setDealer() {
   socket.emit('SET_DEALER');
 }
 
+export function setActivePlayer(activePlayerId: string) {
+  socket.emit('SET_ACTIVE_PLAYER', activePlayerId);
+}
+
 export function signPlayerIn(
   playerAvatar: string,
   playerId: string,

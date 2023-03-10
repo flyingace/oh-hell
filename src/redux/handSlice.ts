@@ -44,6 +44,7 @@ const handSlice = createSlice({
 });
 
 export const {
+  resetBooksBid,
   resetTotalBooksBid,
   setHandTrumpCard,
   updateBooksBid,
@@ -60,7 +61,8 @@ export const getBooksBidByPlayerId = (bidderId: string | null) => {
       : 0;
   };
 };
-export const getBidCount = (state: RootState) => state.hand.booksBid.length;
+export const getAllPlayersHaveBid = (state: RootState) =>
+  state.hand.booksBid.length === 5;
 export const getBidTotals = (state: RootState) => state.hand.totalBooksBid;
 export const getTrumpCard = (state: RootState) => state.hand.trumpCard;
 export const getTrumpSuit = (state: RootState) => state.hand.trumpCard?.suit;

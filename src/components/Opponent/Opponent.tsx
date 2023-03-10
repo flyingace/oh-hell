@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../redux/store';
-import { getActivePlayerId, getDealerId } from '../../redux/gameSlice';
+import { useAppSelector } from 'redux/store';
+import { getActivePlayerId, getDealerId } from 'redux/gameSlice';
 import Avatar from '../Avatar/Avatar';
 import BookCounter from '../BookCounter/BookCounter';
 import DealerButton from '../DealerButton/DealerButton';
-import { PlayerData } from '../../types';
+import { PlayerData } from 'types';
 import * as S from './Opponent.styles';
 
 export type OpponentData = Omit<PlayerData, 'playerHand'>;
@@ -20,16 +19,10 @@ export default function Opponent({
 }: OpponentData) {
   const activePlayerId = useAppSelector(getActivePlayerId);
   const dealerId = useAppSelector(getDealerId);
-  const [isActivePlayer, setIsActivePlayer] = useState<boolean>(false);
-  const [isDealer, setIsDealer] = useState<boolean>(false);
+  console.log(playerName, playerId, activePlayerId);
 
-  useEffect(() => {
-    setIsDealer(dealerId === playerId);
-  }, [dealerId, playerId]);
-
-  useEffect(() => {
-    setIsActivePlayer(activePlayerId === playerId);
-  }, [activePlayerId, playerId]);
+  const isActivePlayer = playerId === activePlayerId;
+  const isDealer = playerId === dealerId;
 
   return (
     <S.Opponent>
