@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
-import { CardData } from '../types';
+import { CardData, CardMetaData } from '../types';
 
 const socket = io('http://localhost:3001');
 
@@ -14,6 +14,14 @@ export function disconnectAll() {
 
 export function setDealer() {
   socket.emit('SET_DEALER');
+}
+
+export function setActivePlayer(activePlayerId: string) {
+  socket.emit('SET_ACTIVE_PLAYER', activePlayerId);
+}
+
+export function advanceActivePlayer() {
+  socket.emit('ADVANCE_ACTIVE_PLAYER');
 }
 
 export function signPlayerIn(
@@ -31,7 +39,7 @@ export function signPlayerIn(
   });
 }
 
-export function addCardToPool(card: CardData) {
+export function addCardToPool(card: CardMetaData) {
   socket.emit('CARD_PLAYED', card);
 }
 

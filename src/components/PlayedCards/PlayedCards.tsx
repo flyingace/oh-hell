@@ -1,17 +1,62 @@
 import { DragEvent, ReactNode, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/store';
 import { removeCardFromHand } from 'redux/playerSlice';
-import { getPlayedCards, updatePlayedCards } from 'redux/roundSlice';
+import {
+  getLedSuit,
+  getPlayedCards,
+  resetPlayedCards,
+  setLedSuit,
+  updatePlayedCards,
+} from 'redux/roundSlice';
 import Card from '../Card/Card';
-import socket, { addCardToPool } from '../../utils/socket-methods';
-import { CardData } from '../../types';
+import socket, {
+  addCardToPool,
+  advanceActivePlayer,
+  setActivePlayer,
+} from '../../utils/socket-methods';
+import { CardData, CardMetaData } from '../../types';
 import * as S from './PlayedCards.styles';
+import { getTrumpSuit } from '../../redux/handSlice';
+import { setActivePlayerId } from '../../redux/gameSlice';
 
 /* PlayedCards */
 export default function PlayedCards() {
   const [cardsInPool, updateCardsInPool] = useState<ReactNode[]>([]);
   const dispatch = useAppDispatch();
+  const ledSuit = useAppSelector(getLedSuit);
+  const trumpSuit = useAppSelector(getTrumpSuit);
   const playedCards = useAppSelector(getPlayedCards);
+
+  useEffect(() => {
+    function getRoundWinnerId() {
+      const highCardValue = Math.max(
+        ...playedCards.map((playedCard) => playedCard.value)
+      );
+      return playedCards.find((card) => card.value === highCardValue)?.playerId;
+    }
+    // look at all cards
+    // find the card with the highest value
+    // assign a value to cards
+    // cards not matching led suit or trump are 0
+    // a card
+
+    if (playedCards.length === 1) {
+      // set the value of the led suit
+      dispatch(setLedSuit(playedCards[0].suit));
+      advanceActivePlayer();
+    } else if (playedCards.length === 5) {
+      const winnerId = getRoundWinnerId(); // determine who won the book
+      dispatch(resetPlayedCards());
+      if (winnerId) {
+        setActivePlayer(winnerId);
+      }
+      // update the number of books taken and by whom for the round
+      // end the round
+      // set the active player to the book taker
+    } else {
+      advanceActivePlayer();
+    }
+  }, [dispatch, ledSuit, playedCards, trumpSuit]);
 
   useEffect(() => {
     function cardAddedHandler(playedCard: CardData) {
@@ -42,10 +87,22 @@ export default function PlayedCards() {
     updateCardsInPool(pool);
   }, [playedCards]);
 
+  function updateCardValue(cardData: CardMetaData): CardMetaData {
+    let cardValue = 0;
+    if (cardData.suit === ledSuit) {
+      cardValue = cardData.value;
+    }
+    if (cardData.suit === trumpSuit) {
+      cardValue = cardData.value + 13;
+    }
+    return { ...cardData, value: cardValue };
+  }
+
   function handleCardDrop(evt: DragEvent) {
     const cardData = JSON.parse(evt.dataTransfer.getData('text/plain'));
-    addCardToPool(cardData);
-    removeCardFromPlayersHand(cardData);
+    const updatedCard = updateCardValue(cardData);
+    addCardToPool(updatedCard);
+    removeCardFromPlayersHand(updatedCard);
     return false;
   }
 

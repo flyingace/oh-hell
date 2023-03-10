@@ -5,7 +5,7 @@ import * as S from './Card.styles';
 /* Card */
 export default function Card({
   draggable = false,
-  id,
+  metaData,
   name,
   suit,
   value,
@@ -13,11 +13,8 @@ export default function Card({
   const src: string = `../../assets/deck/${name}${suit}.png`;
 
   function handleDragStart(evt: DragEvent) {
-    if (draggable) {
-      evt.dataTransfer.setData(
-        'text/plain',
-        JSON.stringify({ id: id, name: name, suit: suit, value: value })
-      );
+    if (draggable && metaData) {
+      evt.dataTransfer.setData('text/plain', metaData);
     }
   }
 

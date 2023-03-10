@@ -48,6 +48,16 @@ io.on('connection', (socket) => {
     io.emit('UPDATE_PLAYERS', remoteStore.players);
   });
 
+  socket.on('SET_ACTIVE_PLAYER', (activePlayerId: string) => {
+    io.emit('UPDATE_ACTIVE_PLAYER', activePlayerId);
+  });
+
+  socket.on('ADVANCE_ACTIVE_PLAYER', () => {
+    if (remoteStore.activePlayerId) {
+      updateActivePlayer(remoteStore.activePlayerId);
+    }
+  });
+
   socket.on('SET_DEALER', () => {
     const { dealerId, players } = remoteStore;
     const nextDealerId = dealerId

@@ -26,9 +26,18 @@ export type CardName =
 export type CardSuit = 'Clubs' | 'Diamonds' | 'Hearts' | 'Spades';
 
 export type CardData = {
+  metaData?: string;
   draggable?: boolean;
   id: number;
   name: CardName;
+  suit: CardSuit;
+  value: number;
+};
+
+export type CardMetaData = {
+  id: number;
+  name: CardName;
+  playerId: string;
   suit: CardSuit;
   value: number;
 };

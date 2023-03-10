@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'redux/store';
 import { getGamePhase, getGamePlayers, getHandCount } from 'redux/gameSlice';
+import { resetBooksBid, resetTotalBooksBid } from 'redux/handSlice';
 import { getPlayerId } from 'redux/playerSlice';
 import { resetPlayedCards } from 'redux/roundSlice';
 import BidModal from '../BidModal/BidModal';
@@ -10,7 +11,7 @@ import PlayedCards from '../PlayedCards/PlayedCards';
 import Player from '../Player/Player';
 import TrumpCard from '../TrumpCard/TrumpCard';
 import { dealCards, disconnectAll, setDealer } from 'utils/socket-methods';
-import { PlayerData } from '../../types';
+import { PlayerData } from 'types';
 import * as S from './Table.styles';
 
 /* Table */
@@ -33,6 +34,8 @@ export default function Table() {
 
   function resetGame() {
     dispatch(resetPlayedCards());
+    dispatch(resetBooksBid());
+    dispatch(resetTotalBooksBid());
     disconnectAll();
     sessionStorage.clear();
   }

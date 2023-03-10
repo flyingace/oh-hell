@@ -44,7 +44,7 @@ export default function Player() {
         <BookCounter booksBid={booksBid} booksTaken={booksTaken} />
         <S.PlayerScore>{playerScore}</S.PlayerScore>
       </S.PlayerStack>
-      <Hand isPlayerTurn={isActivePlayer} />
+      <Hand isPlayerTurn={isActivePlayer} playerId={playerId} />
     </S.Player>
   );
 }
